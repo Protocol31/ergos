@@ -20,6 +20,11 @@ fi
 for f in android/app/build.gradle android/app/build.gradle.kts; do
   [ -f "$f" ] && sed -i -E 's/minSdk(Version)? *=? *flutter\.minSdkVersion/minSdk = 24/' "$f" || true
 done
+# compileSdk 36 (lo exigen las dependencias de AndroidX recientes)
+for f in android/app/build.gradle android/app/build.gradle.kts; do
+  [ -f "$f" ] && sed -i -E 's/compileSdk(Version)? *=? *flutter\.compileSdkVersion/compileSdk = 36/' "$f" || true
+done
+rm -f test/widget_test.dart
 # local_auth necesita FlutterFragmentActivity
 K=$(find android/app/src/main -name MainActivity.kt | head -1)
 sed -i 's/FlutterActivity/FlutterFragmentActivity/g' "$K"
