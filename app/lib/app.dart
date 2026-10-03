@@ -55,7 +55,7 @@ class _ErgosAppState extends ConsumerState<ErgosApp> with WidgetsBindingObserver
         child: !_introDone
             ? IntroScreen(key: const ValueKey('intro'), onDone: () => setState(() => _introDone = true))
             : session == null
-                ? const AuraBackground(key: ValueKey('gate'), child: GateScreen())
+                ? const AuraBackground(key: ValueKey('gate'), child: Scaffold(backgroundColor: Colors.transparent, body: SafeArea(child: GateScreen())))
                 : const AuraBackground(key: ValueKey('shell'), child: ErgosShell()),
       ),
     );
