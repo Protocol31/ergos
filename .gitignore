@@ -1,0 +1,11 @@
+build/
+.dart_tool/
+.flutter-plugins*
+.packages
+pubspec.lock
+app/android/
+app/windows/
+app/ios/
+*.apk
+*.jks
+key.properties
